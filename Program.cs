@@ -1,9 +1,6 @@
 ﻿using INTEC.INFRASTRUCTURE;
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.Services.AddDbContext<DBContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("INTECContext") ?? throw new InvalidOperationException("Connection string 'INTECContext' not found.")));
-
 // Add services to the container.
 
 builder.Services.AddPersistence(builder.Configuration);
@@ -17,8 +14,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "origenes",
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:4200",
-                                              "http://www.contoso.com");
+                          policy.WithOrigins("http://localhost:4200");
                       });
 });
 

@@ -9,9 +9,9 @@ namespace INTEC.Controllers
     [ApiController]
     public class EditorialesController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly IApplicationDBContext _context;
 
-        public EditorialesController(ApplicationDBContext context)
+        public EditorialesController(IApplicationDBContext context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace INTEC.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(editoriales).State = EntityState.Modified;
+            _context.Editoriales.Entry(editoriales).State = EntityState.Modified;
 
             try
             {

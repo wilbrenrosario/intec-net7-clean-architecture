@@ -9,9 +9,9 @@ namespace INTEC.Controllers
     [ApiController]
     public class LibrosController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly IApplicationDBContext _context;
 
-        public LibrosController(ApplicationDBContext context)
+        public LibrosController(IApplicationDBContext context)
         {
             _context = context;
         }
@@ -64,7 +64,7 @@ namespace INTEC.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(libros).State = EntityState.Modified;
+            _context.Libros.Entry(libros).State = EntityState.Modified;
 
             try
             {
