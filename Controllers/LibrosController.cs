@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using INTEC.CORE.Model;
 using INTEC.INFRASTRUCTURE.Persistence;
+using INTEC.APPLICATION;
+using MediatR;
+using INTEC.INFRASTRUCTURE.Sql.Commands;
 
 namespace INTEC.Controllers
 {
@@ -10,10 +13,12 @@ namespace INTEC.Controllers
     public class LibrosController : ControllerBase
     {
         private readonly IApplicationDBContext _context;
+        private readonly IMediator _mediator;
 
-        public LibrosController(IApplicationDBContext context)
+        public LibrosController(IApplicationDBContext context, IMediator mediator)
         {
             _context = context;
+            _mediator = mediator;
         }
 
         // GET: api/Libros
@@ -48,9 +53,8 @@ namespace INTEC.Controllers
         [HttpGet("LibrosFiltro/{data}")]
         public async Task<List<Libros>> GetLibrosFiltros(string data)
         {
-            var libros = _context.Libros.Where(x => x.codigoeditorial.Equals(data)).ToList();
-
-            return libros;
+            var libros = await _mediator.Send(new SearchBookCommand(data));
+            return (List<Libros>)libros;
         }
 
 

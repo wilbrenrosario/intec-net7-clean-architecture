@@ -1,4 +1,5 @@
-﻿using INTEC.CORE.Model;
+﻿using INTEC.APPLICATION;
+using INTEC.CORE.Model;
 using INTEC.INFRASTRUCTURE.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

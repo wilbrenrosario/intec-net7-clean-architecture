@@ -1,4 +1,7 @@
 ﻿using INTEC.INFRASTRUCTURE;
+using INTEC.INFRASTRUCTURE.Persistence;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -17,9 +20,6 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("http://localhost:4200");
                       });
 });
-
-
-
 
 var app = builder.Build();
 

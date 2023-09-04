@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using INTEC.CORE.Model;
 using INTEC.INFRASTRUCTURE.Persistence;
+using INTEC.APPLICATION;
 
 namespace INTEC.Controllers
 {
